@@ -1,61 +1,165 @@
+:root {
+  --bg: #f5f7ff;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --primary-600: #5c6aff;
+  --primary-400: #7a8bff;
+  --accent: #9b7bff;
+  --danger: #ff5c5c;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: sans-serif;
-  margin: 30px auto;
-  max-width: 700px;
-  color: #333;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: linear-gradient(135deg, var(--primary-400) 0%, var(--accent) 100%);
+  color: #0f172a;
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
 }
 
-input, button {
-  padding: 10px;
-  font-size: 16px;
-  margin-bottom: 10px;
+.container {
+  width: 100%;
+  max-width: 1100px;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 32px;
 }
 
-button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  cursor: pointer;
+h1 {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--primary-600);
 }
 
-button:hover {
-  background-color: #0056b3;
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 24px rgba(19, 24, 40, 0.06);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border-radius: 10px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
+  min-width: 540px;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px 14px;
   text-align: left;
 }
 
-tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-tr:hover {
-  background-color: #f1f1f1;
-}
-
-.action-btn {
-  margin-right: 5px;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.edit-btn {
-  background-color: #ffc107;
-  color: black;
-  border: none;
-}
-
-.delete-btn {
-  background-color: #dc3545;
+thead th {
+  background: linear-gradient(90deg, var(--primary-600), var(--accent));
   color: white;
-  border: none;
+}
+
+tbody tr:hover {
+  background: #f8f9ff;
+}
+
+.btn {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.btn.edit {
+  background: linear-gradient(90deg, #ffd27a, #f7b731);
+  color: #111;
+}
+
+.btn.delete {
+  background: linear-gradient(90deg, #ff8a8a, var(--danger));
+  color: white;
+}
+
+.form-card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(15, 23, 42, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+input[type=text], input[type=number] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6eef9;
+  background: #fafbff;
+  outline: none;
+  font-size: 1rem;
+}
+
+input:focus {
+  box-shadow: 0 4px 18px rgba(92, 106, 255, 0.25);
+  border-color: var(--primary-600);
+}
+
+.primary {
+  background: linear-gradient(90deg, var(--primary-600), var(--accent));
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 700;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  table {
+    font-size: 0.85rem;
+  }
+  thead {
+    display: none;
+  }
+  tbody tr {
+    display: block;
+    background: #fff;
+    margin-bottom: 12px;
+    border-radius: 10px;
+    padding: 10px 8px;
+  }
+  tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 6px;
+  }
 }
